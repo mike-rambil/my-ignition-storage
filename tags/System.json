@@ -1,0 +1,160 @@
+{
+  "name": "",
+  "tagType": "Provider",
+  "tags": [
+    {
+      "name": "Gateway",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "CurrentDateTime",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "Performance",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Memory Usage",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "CPU Usage",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "Disk Utilization",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "Memory Utilization",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "Max Memory",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "Available Disk Space (MB)",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "SystemName",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "LicenseState",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "Sessions",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "SessionCount",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "Timezone",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "Alarming",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Active and Unacked",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "Clear and Unacked",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "Clear and Acked",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "Active and Acked",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "OPC",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Connections",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "Ignition OPC UA Server",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "Connected",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "Enabled",
+                      "tagType": "AtomicTag"
+                    },
+                    {
+                      "name": "State",
+                      "tagType": "AtomicTag"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Redundancy",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Role",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "IsActive",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "ActivityLevel",
+              "tagType": "AtomicTag"
+            },
+            {
+              "name": "Connection",
+              "tagType": "Folder",
+              "tags": [
+                {
+                  "name": "IsConnected",
+                  "tagType": "AtomicTag"
+                },
+                {
+                  "name": "PeerId",
+                  "tagType": "AtomicTag"
+                }
+              ]
+            },
+            {
+              "name": "IsMaster",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "UptimeSeconds",
+          "tagType": "AtomicTag"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "name": "",
+  "tagType": "Provider",
+  "tags": [
+    {
+      "name": "_types_",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Edge Nodes",
+          "tagType": "Folder"
+        },
+        {
+          "name": "CMMS",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "name": "Equipment",
+              "tagType": "UdtType",
+              "tags": [
+                {
+                  "name": "StartTime",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "dataType": "DateTime",
+                      "formatString": "yyyy-MM-dd h:mm:ss aa",
+                      "name": "Downtime",
+                      "tagType": "AtomicTag",
+                      "valueSource": "memory"
+                    },
+                    {
+                      "dataType": "DateTime",
+                      "formatString": "yyyy-MM-dd h:mm:ss aa",
+                      "name": "Running",
+                      "tagType": "AtomicTag",
+                      "valueSource": "memory"
+                    },
+                    {
+                      "dataType": "DateTime",
+                      "formatString": "yyyy-MM-dd h:mm:ss aa",
+                      "name": "Maintenance",
+                      "tagType": "AtomicTag",
+                      "valueSource": "memory"
+                    },
+                    {
+                      "dataType": "DateTime",
+                      "formatString": "yyyy-MM-dd h:mm:ss aa",
+                      "name": "Idle",
+                      "tagType": "AtomicTag",
+                      "valueSource": "memory"
+                    }
+                  ]
+                },
+                {
+                  "name": "Metrics",
+                  "tagType": "Folder",
+                  "tags": [
+                    {
+                      "name": "Maintenance",
+                      "tagType": "AtomicTag",
+                      "value": 0,
+                      "valueSource": "memory"
+                    },
+                    {
+                      "name": "Idle",
+                      "tagType": "AtomicTag",
+                      "value": 0,
+                      "valueSource": "memory"
+                    },
+                    {
+                      "name": "Running",
+                      "tagType": "AtomicTag",
+                      "value": 0,
+                      "valueSource": "memory"
+                    },
+                    {
+                      "name": "Downtime",
+                      "tagType": "AtomicTag",
+                      "value": 0,
+                      "valueSource": "memory"
+                    }
+                  ]
+                },
+                {
+                  "dataType": "String",
+                  "eventScripts": [
+                    {
+                      "eventid": "valueChanged",
+                      "script": "\t# Variables\n\tSTATUS \u003d [\u0027Idle\u0027, \u0027Running\u0027, \u0027Maintenance\u0027, \u0027Downtime\u0027]\n\tPATH \u003d \"[.]%s/%s\"\n\t\n\t# Check current value is valid\n\tif currentValue.value in STATUS:\n\t\t# Write current status start time\n\t\tsystem.tag.writeBlocking([PATH % (\u0027StartTime\u0027, currentValue.value)], [system.date.now()])\n\t\n\t# Check previous value is valid\n\tif previousValue.value in STATUS:\n\t\t# Calculate total metric time\n\t\tstartTime \u003d system.tag.readBlocking([PATH % (\u0027StartTime\u0027, previousValue.value)])[0].value\n\t\t\n\t\t# Calculate/Write total time if there is a start time\n\t\tif startTime:\n\t\t\tcurrentTime \u003d system.tag.readBlocking([PATH % (\u0027Metrics\u0027, previousValue.value)])[0].value\n\t\t\ttotalTime \u003d currentTime + system.date.secondsBetween(startTime, system.date.now())\n\t\t\tsystem.tag.writeBlocking([PATH % (\u0027Metrics\u0027, previousValue.value)], [totalTime])\n\t\t\t\n\t\t# Clear previous status start time\n\t\tsystem.tag.writeBlocking([PATH % (\u0027StartTime\u0027, previousValue.value)], [None])"
+                    }
+                  ],
+                  "name": "Status",
+                  "tagType": "AtomicTag",
+                  "value": "Idle",
+                  "valueSource": "memory"
+                },
+                {
+                  "dataType": "Boolean",
+                  "eventScripts": [
+                    {
+                      "enabled": false,
+                      "eventid": "valueChanged",
+                      "script": "\tpass"
+                    }
+                  ],
+                  "expression": "if({[.]Status}\u003d\"Idle\", true\n\t, if({[.]Status}\u003d\"Running\", true\n\t\t, if({[.]Status}\u003d\"Maintenance\", true\n\t\t\t, if({[.]Status}\u003d\"Downtime\", true\n\t\t\t\t, false\n\t\t\t)\n\t\t)\n\t)\n)",
+                  "name": "ValidStatus",
+                  "tagType": "AtomicTag",
+                  "valueSource": "expr"
+                }
+              ],
+              "typeColor": -47289
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
