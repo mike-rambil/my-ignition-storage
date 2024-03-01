@@ -3,6 +3,28 @@
   "tagType": "Provider",
   "tags": [
     {
+      "dataType": "Document",
+      "name": "docType",
+      "tagType": "AtomicTag",
+      "value": {
+        "userArray": [
+          {
+            "role": "user",
+            "userName": "mike"
+          },
+          {
+            "role": "admin",
+            "userName": "patrick"
+          },
+          {
+            "role": "admin",
+            "userName": "roger"
+          }
+        ]
+      },
+      "valueSource": "memory"
+    },
+    {
       "name": "_types_",
       "tagType": "Folder",
       "tags": [

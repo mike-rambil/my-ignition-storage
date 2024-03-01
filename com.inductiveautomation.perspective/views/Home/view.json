@@ -26,7 +26,7 @@
         "position": {
           "height": 400,
           "width": 402,
-          "x": 164.5,
+          "x": 81.5,
           "y": 200
         },
         "propConfig": {
@@ -43,7 +43,7 @@
                   "type": "expression"
                 },
                 {
-                  "code": "\t    array \u003d value[\"userArray\"]  # replace \"userArray\" with the actual key\n\t    return array",
+                  "code": "\t    array \u003d value[\"userArray\"]\n\t    return array",
                   "type": "script"
                 }
               ],
@@ -55,14 +55,129 @@
           "selection": {
             "data": [
               {
-                "role": "admin",
-                "userName": "patrick"
+                "column_1": "role",
+                "column_2": "userName"
               }
             ],
             "selectedRow": 1
           }
         },
         "type": "ia.display.table"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tuser \u003d self.getSibling(\"userNameField\").props.text\n\trole \u003d self.getSibling(\"roleField\").props.text\n\tpayloadData \u003d {\"userName\":user,\"role\":role}\n\tsystem.util.sendMessage(\"micheals-first-ignition-integration\", \"userCreated\", {\"message\":payloadData}, \"S\")"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          },
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "    # Get the tag path\n#    tagPath \u003d \"[default]userNameTag\"  # replace \"YourTagName\" with your actual tag name\n\n    # Read the tag value\n#    userName \u003d system.tag.read(tagPath).value\n\n#    print(userName)\n\n\tuser \u003d self.getSibling(\"userNameField\").props.text\n\tprint(user)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "createUser"
+        },
+        "position": {
+          "height": 34,
+          "width": 131,
+          "x": 573,
+          "y": 366
+        },
+        "props": {
+          "text": "Create User"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "userNameField"
+        },
+        "position": {
+          "height": 32,
+          "width": 150,
+          "x": 564,
+          "y": 215
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]userNameTag"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "roleField"
+        },
+        "position": {
+          "height": 32,
+          "width": 150,
+          "x": 564,
+          "y": 295
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]roleTag"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 32,
+          "width": 146,
+          "x": 566,
+          "y": 184
+        },
+        "props": {
+          "text": "User Name"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 146,
+          "x": 566,
+          "y": 263
+        },
+        "props": {
+          "text": "Role"
+        },
+        "type": "ia.display.label"
       }
     ],
     "meta": {
