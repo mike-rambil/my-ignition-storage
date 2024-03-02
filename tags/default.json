@@ -3,6 +3,20 @@
   "tagType": "Provider",
   "tags": [
     {
+      "dataType": "String",
+      "name": "userNameTag",
+      "tagType": "AtomicTag",
+      "value": "newGUY",
+      "valueSource": "memory"
+    },
+    {
+      "dataType": "String",
+      "name": "roleTag",
+      "tagType": "AtomicTag",
+      "value": "CEO",
+      "valueSource": "memory"
+    },
+    {
       "dataType": "Document",
       "name": "docType",
       "tagType": "AtomicTag",
@@ -19,6 +33,30 @@
           {
             "role": "admin",
             "userName": "roger"
+          },
+          {
+            "role": "CEO",
+            "userName": "newGUY"
+          },
+          {
+            "role": "CEO",
+            "userName": "newGUY"
+          },
+          {
+            "role": "CEO",
+            "userName": "newGUY"
+          },
+          {
+            "role": "CEO",
+            "userName": "newGUY"
+          },
+          {
+            "role": "CEO",
+            "userName": "newGUY"
+          },
+          {
+            "role": "CEO",
+            "userName": "newGUYvSD"
           }
         ]
       },

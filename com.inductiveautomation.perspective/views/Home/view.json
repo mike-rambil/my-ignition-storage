@@ -51,17 +51,6 @@
             }
           }
         },
-        "props": {
-          "selection": {
-            "data": [
-              {
-                "column_1": "role",
-                "column_2": "userName"
-              }
-            ],
-            "selectedRow": 1
-          }
-        },
         "type": "ia.display.table"
       },
       {
@@ -70,15 +59,6 @@
             "onActionPerformed": {
               "config": {
                 "script": "\tuser \u003d self.getSibling(\"userNameField\").props.text\n\trole \u003d self.getSibling(\"roleField\").props.text\n\tpayloadData \u003d {\"userName\":user,\"role\":role}\n\tsystem.util.sendMessage(\"micheals-first-ignition-integration\", \"userCreated\", {\"message\":payloadData}, \"S\")"
-              },
-              "scope": "G",
-              "type": "script"
-            }
-          },
-          "dom": {
-            "onClick": {
-              "config": {
-                "script": "    # Get the tag path\n#    tagPath \u003d \"[default]userNameTag\"  # replace \"YourTagName\" with your actual tag name\n\n    # Read the tag value\n#    userName \u003d system.tag.read(tagPath).value\n\n#    print(userName)\n\n\tuser \u003d self.getSibling(\"userNameField\").props.text\n\tprint(user)"
               },
               "scope": "G",
               "type": "script"
@@ -120,6 +100,11 @@
               },
               "type": "tag"
             }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "testClass"
           }
         },
         "type": "ia.input.text-field"

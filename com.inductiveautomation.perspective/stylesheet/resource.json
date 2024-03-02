@@ -4,13 +4,13 @@
   "restricted": false,
   "overridable": true,
   "files": [
-    "data.bin"
+    "stylesheet.css"
   ],
   "attributes": {
     "lastModification": {
       "actor": "admin",
-      "timestamp": "2024-03-02T02:45:33Z"
+      "timestamp": "2024-03-01T18:38:10Z"
     },
-    "lastModificationSignature": "324639d000a89a69571763e8827adc615e2893a64561223498ad084469ef1663"
+    "lastModificationSignature": "3e52131e256a787f79eb269b134951877f7beb1c4fc0b2d2a22381e6a69c3890"
   }
 }
