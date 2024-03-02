@@ -86,8 +86,8 @@
         "position": {
           "height": 32,
           "width": 150,
-          "x": 564,
-          "y": 215
+          "x": 563.5,
+          "y": 295
         },
         "propConfig": {
           "props.text": {
@@ -116,8 +116,8 @@
         "position": {
           "height": 32,
           "width": 150,
-          "x": 564,
-          "y": 295
+          "x": 563.5,
+          "y": 216
         },
         "propConfig": {
           "props.text": {
